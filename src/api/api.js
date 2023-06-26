@@ -7,5 +7,16 @@ export async function getPopularMovies() {
     return json
 }
 
-getPopularMovies()
+export async function getPopularTvSeries() {
+    const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR`)
+    const json = await response.json()
+    return json
+}
+
+export async function getTopRatedMovies() {
+    const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=pt-BR`)
+    const json = await response.json()
+    return json
+}
+
 
