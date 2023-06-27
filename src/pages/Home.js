@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { Header } from "../components/layout/Header/Header"
 import { Footer } from "../components/layout/Footer/Footer"
-import { CardMovie } from "../components/CardMovie/CardMovie"
 import { getPopularMovies, getPopularTvSeries, getTopRatedMovies } from "../api/api"
+import { TopFivePopularMovies } from "../components/Movies/TopFivePopularMovies"
+import { TopFiveRatedMovies } from "../components/Movies/TopFiveRatedMovies"
+import { TopFivePopularSeries } from "../components/Movies/TopFivePopularSeries"
 
 export function Home() {
 
@@ -44,24 +46,9 @@ export function Home() {
         <>
             <Header />
             <div className="w-full flex flex-col justify-center items-center mt-40">
-                <p className="text-white text-center mt-16 text-2xl font-semibold">Filmes Populares</p>
-                <div className="flex flex-col justify-center lg:flex items-center lg:flex-row lg:justify-center gap-4 w-full mt-12">
-                    {topFivePopularMovies.map((movie, index) => {
-                        return <CardMovie key={index} movie={movie}/>
-                    })}
-                </div>
-                <p className="text-white text-center mt-16 text-2xl font-semibold">Filmes Mais Votados</p>
-                <div className="flex flex-col justify-center lg:flex items-center lg:flex-row lg:justify-center gap-4 w-full mt-12">
-                    {topFiveRatedMovies.map((serie, index) => {
-                        return <CardMovie key={index} movie={serie}/>
-                    })}
-                </div>
-                <p className="text-white text-center mt-16 text-2xl font-semibold">Series Populares</p>
-                <div className="flex flex-col justify-center lg:flex items-center lg:flex-row lg:justify-center gap-4 w-full mt-12">
-                    {topFivepopularTvSeries.map((serie, index) => {
-                        return <CardMovie key={index} movie={serie}/>
-                    })}
-                </div>
+                <TopFivePopularMovies movies={topFivePopularMovies}/>
+                <TopFiveRatedMovies movies={topFiveRatedMovies}/>
+                <TopFivePopularSeries series={topFivepopularTvSeries}/>
             </div>
             <Footer />
         </>

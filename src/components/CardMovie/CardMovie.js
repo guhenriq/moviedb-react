@@ -1,4 +1,4 @@
-export function CardMovie({ movie }) {
+export function CardMovie({ movie, style }) {
 
     const formatVoteAverage = (movie) => {
         let { vote_average } = movie
@@ -11,7 +11,7 @@ export function CardMovie({ movie }) {
     } 
     
     return (
-        <div className="flex flex-col justify-center items-center w-4/6 lg:w-1/6 h-autorounded-lg ">
+        <div className={`flex flex-col justify-center items-center h-autorounded-lg ${style}`}>
             <a href="/">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" className="w-full h-auto rounded-lg"/>
             </a>
