@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Header } from "../components/layout/Header/Header"
+import { Footer } from "../components/layout/Footer/Footer"
 import { CardMovie } from "../components/CardMovie/CardMovie"
 import { getPopularMovies, getPopularTvSeries, getTopRatedMovies } from "../api/api"
 
@@ -62,6 +63,7 @@ export function Home() {
                     })}
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
