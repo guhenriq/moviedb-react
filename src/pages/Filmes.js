@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPopularMovies } from "../api/api"
-// import { CardMovie } from "../components/CardMovie/CardMovie"
 import { Header } from "../components/layout/Header/Header"
-import { Footer } from "../components/layout/Footer/Footer"
+import { Spinner } from "../components/Spinner/Spinner"
 import { AllMoviesAndSeries } from "../components/Movies/AllMoviesAndSeries"
 
 export function Filmes() {
@@ -10,6 +9,7 @@ export function Filmes() {
     const [popularMovies, setPopularMovies] = useState([])
     const [moviesLength, setmoviesLength] = useState(0)
     const [moviesPage, setMoviesPage] = useState(1)
+    const [load, setLoad] = useState(false)
 
     const getAllPopularMovies = async () => {
         const response = await getPopularMovies(moviesPage)
@@ -19,20 +19,27 @@ export function Filmes() {
         setmoviesLength(moviesLength + movies.length)
     }
 
-    const nextMoviePage = () => {
-        setMoviesPage(moviesPage + 1)
-    }
-
     useEffect(() => {
         getAllPopularMovies()
         // eslint-disable-next-line
     }, [moviesPage])
 
+    document.body.onscroll = () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            setLoad(true)
+            setTimeout(() => {
+                setLoad(false)
+                setMoviesPage(moviesPage + 1)
+            }, 1500)
+            
+        }
+    }
+
     return (
         <>
             <Header />
-            <AllMoviesAndSeries data={popularMovies} dataLength={moviesLength} nextMoviePage={nextMoviePage}/>
-            <Footer />
+            <AllMoviesAndSeries data={popularMovies} dataLength={moviesLength} />
+            <Spinner status={load}/>
         </>
     )
 }

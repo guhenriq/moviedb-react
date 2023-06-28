@@ -1,5 +1,4 @@
 import { CardMovie } from "../CardMovie/CardMovie"
-import { MdOutlineExpandMore } from "react-icons/md"
 
 export function AllMoviesAndSeries({ data, dataLength, nextMoviePage }) {
     return (
@@ -11,9 +10,6 @@ export function AllMoviesAndSeries({ data, dataLength, nextMoviePage }) {
                 {data.map((movie, index) => {
                     return <CardMovie key={index} movie={movie} style={`w-2/6 lg:w-44`}/>
                 })}
-            </div>
-            <div className="mt-8 flex w-full justify-center">
-                <button type="button" onClick={() => nextMoviePage()}><MdOutlineExpandMore className="text-4xl text-white hover:text-slate-500"/></button>
             </div>
         </div>
     )
