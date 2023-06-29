@@ -7,8 +7,8 @@ export async function getPopularMovies(page) {
     return json
 }
 
-export async function getPopularTvSeries() {
-    const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR`)
+export async function getPopularTvSeries(page) {
+    const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=pt-BR&page=${page}`)
     const json = await response.json()
     return json
 }

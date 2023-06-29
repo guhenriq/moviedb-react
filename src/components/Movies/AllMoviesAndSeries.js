@@ -1,6 +1,6 @@
 import { CardMovie } from "../CardMovie/CardMovie"
 
-export function AllMoviesAndSeries({ data, dataLength, nextMoviePage }) {
+export function AllMoviesAndSeries({ data, dataLength }) {
     return (
         <div className="flex flex-col justify-center items-center w-full mt-60">
             <div className="w-11/12 flex">

@@ -12,7 +12,7 @@ export function Series() {
     const [load, setLoad] = useState(false)
 
     const getAllPopularSeries = async () => {
-        const response = await getPopularTvSeries()
+        const response = await getPopularTvSeries(seriesPage)
         const series = response.results
         
         setPopularSeries([...popularSeries, ...series])
